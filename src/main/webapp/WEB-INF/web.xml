@@ -24,6 +24,14 @@
         <servlet-name>HeroEditServlet</servlet-name>
         <servlet-class>servlet.HeroEditServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>HeroAjaxAddServlet</servlet-name>
+        <servlet-class>servlet.HeroAjaxAddServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HeroAjaxAddServlet</servlet-name>
+        <url-pattern>/heroajaxadd</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>HeroEditServlet</servlet-name>
         <url-pattern>/heroedit</url-pattern>

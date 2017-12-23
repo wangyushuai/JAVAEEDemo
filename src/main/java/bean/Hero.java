@@ -43,4 +43,8 @@ public class Hero {
     private float hp;
     private int damage;
 
+    @Override
+    public String toString() {
+        return getName() + "-hp" + getHp() + "-damage" + getDamage();
+    }
 }
