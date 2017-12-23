@@ -72,7 +72,7 @@ public class HeroDAO {
      */
     public void add(Hero hero) {
         String sql = "insert into hero values(null,?,?,?)";
-        try(Connection c = getConnection();PreparedStatement ps = c.prepareStatement(sql)) {
+        try(Connection c = getConnection();PreparedStatement ps = c.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)) {
             ps.setString(1,hero.getName());
             ps.setFloat(2,hero.getHp());
             ps.setInt(3,hero.getDamage());
@@ -86,5 +86,59 @@ public class HeroDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 更新
+     * @param hero 实体
+     */
+    public void update(Hero hero) {
+        String sql = "update hero set name=?,hp=?,damage=? where id =?";
+        try(Connection c = getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
+            ps.setString(1,hero.getName());
+            ps.setFloat(2,hero.getHp());
+            ps.setInt(3,hero.getDamage());
+            ps.setInt(4,hero.getId());
+            ps.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 删除
+     * @param id
+     */
+    public void  delete(int id) {
+        String sql = "delete from hero where id = ?";
+        try(Connection c = getConnection(); PreparedStatement ps = c.prepareStatement(sql)) {
+            ps.setInt(1,id);
+            ps.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 查询单个实体
+     * @param id
+     * @return
+     */
+    public Hero get(int id) {
+        Hero hero = null;
+        try(Connection c = getConnection(); Statement s = c.createStatement();) {
+            String sql = "select * from hero where id = " + id;
+            ResultSet rs = s.executeQuery(sql);
+            while (rs.next()) {
+                hero = new Hero();
+                hero.setId(rs.getInt(1));
+                hero.setName(rs.getString("name"));
+                hero.setHp(rs.getFloat(3));
+                hero.setDamage(rs.getInt(4));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return hero;
     }
 }
