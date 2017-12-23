@@ -22,6 +22,7 @@ public class HeroAjaxAddServlet extends HttpServlet {
         System.out.println("转换为JSON对象之后是:" + json);
         Hero hero = (Hero) json.toBean(json,Hero.class);
 
+        //write
         new HeroDAO().add(hero);
         System.out.println(hero.toString());
     }
