@@ -28,6 +28,22 @@
         <servlet-name>HeroAjaxAddServlet</servlet-name>
         <servlet-class>servlet.HeroAjaxAddServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GetHeroByAjaxServlet</servlet-name>
+        <servlet-class>servlet.GetHeroByAjaxServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetHeroesByAjaxServlet</servlet-name>
+        <servlet-class>servlet.GetHeroesByAjaxServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetHeroesByAjaxServlet</servlet-name>
+        <url-pattern>/getheroes</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetHeroByAjaxServlet</servlet-name>
+        <url-pattern>/getherobyajax</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>HeroAjaxAddServlet</servlet-name>
         <url-pattern>/heroajaxadd</url-pattern>
